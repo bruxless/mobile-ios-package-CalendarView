@@ -16,13 +16,20 @@ public protocol WeekdaysView: View {
     func createWeekdayLabel(_ weekday: MWeekday) -> AnyWeekdayLabel
 }
 
-// MARK: - Default View Implementation
-public extension WeekdaysView {
-    func createContent() -> AnyView { createWeekdaysView().erased() }
-    func createWeekdayLabel(_ weekday: MWeekday) -> AnyWeekdayLabel { createDefaultWeekDayLabel(weekday).erased() }
-}
 private extension WeekdaysView {
-    func createDefaultWeekDayLabel(_ weekday: MWeekday) -> DefaultWeekdayLabel { DefaultWeekdayLabel(weekday: weekday) }
+    
+    func createDefaultContent() -> some View {
+        createWeekdaysView().erased()
+    }
+    
+    func createWeekdayLabel(_ weekday: MWeekday) -> AnyWeekdayLabel {
+        createDefaultWeekDayLabel(weekday).erased()
+    }
+    
+    func createDefaultWeekDayLabel(_ weekday: MWeekday) -> DefaultWeekdayLabel {
+        DefaultWeekdayLabel(weekday: weekday)
+    }
+    
 }
 
 // MARK: - Helpers
