@@ -20,6 +20,7 @@ extension Data { struct MonthView {
 extension [Data.MonthView] {
     static func generate() -> Self {
         createDatesRange()
+            .reversed()
             .map(createMonthDate)
             .map(createMonthViewData)
     }
